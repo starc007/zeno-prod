@@ -1,0 +1,27 @@
+.sidebar-container {
+  position: sticky;
+  /* top: 10px; */
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.sidebar a {
+  text-decoration-line: none;
+  /* color: #0f1419; */
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.5rem 0.5rem;
+  margin: 0.5rem 1rem;
+}
+
+.mobile {
+  display: flex;
+}
+
+.mobile a {
+  padding: 6px 7px 6px 12px;
+  margin: 0px 5px;
+}

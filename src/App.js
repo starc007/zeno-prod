@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Home from "./pages/Public/Home";
 import PrivateRoute from "./routes/PrivateRoute";
@@ -9,6 +9,8 @@ import Payment from "./pages/Private/Payment";
 import Transaction from "./pages/Private/Transaction";
 import Account from "./pages/Private/Account";
 import PaymentStatus from "./components/PaymentStatus";
+import Lend from "./pages/Private/Lend";
+import Swap from "./pages/Private/Swap";
 
 function App() {
   return (
@@ -48,7 +50,23 @@ function App() {
             }
           />
           <Route
-            path="payment/status/:paymentId"
+            path="lend/token"
+            element={
+              <PrivateRoute>
+                <Lend />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="swap/tokens"
+            element={
+              <PrivateRoute>
+                <Swap />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="payment/status/:paymentId/:recAddress"
             element={
               <PrivateRoute>
                 <PaymentStatus />

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
+import { Table } from "react-bootstrap";
 import { getTransactionDetails } from "../../api/payment";
-
+import Loader from "../../components/Loader";
 const Transaction = () => {
   const [details, setDetails] = useState([]);
   const [useradd, setUserAdd] = useState("");
@@ -27,32 +28,38 @@ const Transaction = () => {
   }, 2000);
 
   return (
-    <div className="text-white mt-4 md:mx-4 mx-0">
+    <div className="mt-4 md:mx-4 mx-0">
       <h1 className="text-center font-semibold md:text-4xl text-2xl">
         Transaction History
       </h1>
 
       {loading ? (
-        <p className="text-center text-white text-xl font-medium pt-24">
-          Loading...
-        </p>
-      ) : (
-        <div className="flex flex-col border  rounded mt-4">
-          <div className="flex justify-around border-b py-2 font-medium text-sm md:text-xl">
-            <label>Order ID</label>
-            <label>Reciever Address</label>
-            <label>Amount</label>
-          </div>
-          {details?.map((item) => (
-            <div key={item._id} className="w-full py-2">
-              <div className="flex justify-around text-xs md:text-lg">
-                <label>{item.order_id}</label>
-                <label>{item.receiverWalletAddress}</label>
-                <label>{item.amount}</label>
-              </div>
-            </div>
-          ))}
+        <div className="flex justify-center mt-20">
+          <Loader />
         </div>
+      ) : details.length > 0 ? (
+        <Table striped bordered hover size="sm">
+          <thead>
+            <tr>
+              <th className="text-center pt-2">Order ID</th>
+              <th className="text-center pt-2">Reciever Address</th>
+              <th className="text-center pt-2">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {details?.map((item) => (
+              <tr key={item._id}>
+                <td className="text-center pt-2">{item.order_id}</td>
+                <td className="text-center pt-2">
+                  {item.receiverWalletAddress}
+                </td>
+                <td className="text-center pt-2">{item.amount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+        <p className="text-center mt-20">No Transaction Found</p>
       )}
     </div>
   );

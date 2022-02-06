@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import { MobileMenu, Sidebar } from "../../components/Sidebar/Sidebar";
 const Dashboard = () => {
   return (
-    <div className="bg-black h-screen">
+    <div className="grad-div h-screen">
       <div className="h-16">
         <Header />
       </div>

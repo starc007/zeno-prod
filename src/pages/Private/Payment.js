@@ -45,8 +45,6 @@ const Payment = () => {
       return;
     }
 
-    console.log("user", user.get("ethAddress"));
-
     const dat = await getOrder(
       formData.amount,
       formData.address,
@@ -61,7 +59,7 @@ const Payment = () => {
       order_id: dat.id,
       name: "Payment",
       description: "Make Payment",
-      callback_url: "http://localhost:5000/api/v1/payment/callback",
+      callback_url: "https://zenoprod.herokuapp.com/api/v1/payment/callback",
       redirect: true,
       handler: function (response) {
         console.log(response);
@@ -87,7 +85,7 @@ const Payment = () => {
                   setFormData({ ...formData, address: e.target.value })
                 }
                 placeholder="eg. 0x3318d69069846380cee4a1c390b65dcf2c7a592e"
-                className="w-full border-1 border-black mt-2 rounded px-3 py-1 focus:outline-none focus:ring-2 ring-blue"
+                className="w-full mt-2 rounded px-3 py-1 focus:outline-none focus:ring-2 ring-blue"
               />
             </div>
             <div className="mt-3">
@@ -100,7 +98,7 @@ const Payment = () => {
                   setFormData({ ...formData, amount: e.target.value })
                 }
                 placeholder="eg. 500"
-                className="w-full border-1 border-black mt-2 rounded px-3 py-1 focus:outline-none focus:ring-2 ring-blue"
+                className="w-full mt-2 rounded px-3 py-1 focus:outline-none focus:ring-2 ring-blue"
               />
             </div>
             <div className="mt-4 flex justify-center">

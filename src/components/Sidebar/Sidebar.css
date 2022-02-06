@@ -10,10 +10,10 @@
 .sidebar a {
   text-decoration-line: none;
   /* color: #0f1419; */
-  color: #fff;
-  font-size: 20px;
-  font-weight: 500;
-  padding: 0.5rem 0.5rem;
+  /* color: #000; */
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0.5rem 0.6rem;
   margin: 0.5rem 1rem;
 }
 

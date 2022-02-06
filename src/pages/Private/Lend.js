@@ -5,6 +5,7 @@ import payapi from "../../components/Payment.json";
 import { ethers } from "ethers";
 import { useSnackbar } from "notistack";
 import Loader from "../../components/Loader";
+import zenoapi from "../../components/Zeno.json";
 const Lend = () => {
   const { user } = useMoralis();
   const { enqueueSnackbar } = useSnackbar();
@@ -15,6 +16,24 @@ const Lend = () => {
     days: "",
     timePeriod: "",
   });
+
+  const SendZenoToken = async (userad, amount) => {
+    const contAddress = "0xA1dfaf198897B1AED863EA858b5742F3d270eCC8";
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(contAddress, zenoapi.abi, signer);
+    try {
+      console.log(amount, userad);
+      const deposit = await contract.transferTo(
+        userad,
+        ethers.utils.parseEther(amount)
+      );
+      await deposit.wait();
+      return true;
+    } catch (err) {
+      console.log("send token", err);
+    }
+  };
 
   const LendUserToken = async (ethToken) => {
     const contAddress = "0x30A16396e7e9D7B0778A2B6d4e0e0C938B950375";
@@ -44,6 +63,7 @@ const Lend = () => {
         timePeriod,
         userAddress: user.get("ethAddress"),
       });
+      const rest = await SendZenoToken(user.get("ethAddress"), EthTokens);
       enqueueSnackbar("Lend Token Successfully", {
         variant: "success",
         autoHideDuration: 1500,

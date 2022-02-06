@@ -78,7 +78,7 @@ const Account = () => {
       <div className="mt-4 px-3">
         <p className="text-xl font-semibold">Lend Money </p>
         <p className="text-sm text-gray-500 -mt-2">
-          Zeno Contract Address : 0x71f7986e35edF328984bEA157b3115f38DAa243B
+          Zeno Contract Address : 0xA1dfaf198897B1AED863EA858b5742F3d270eCC8
         </p>
         <div>
           {loading ? (

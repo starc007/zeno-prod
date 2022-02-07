@@ -63,8 +63,12 @@ const Lend = () => {
         timePeriod,
         userAddress: user.get("ethAddress"),
       });
-      const rest = await SendZenoToken(user.get("ethAddress"), EthTokens);
       enqueueSnackbar("Lend Token Successfully", {
+        variant: "success",
+        autoHideDuration: 1500,
+      });
+      const rest = await SendZenoToken(user.get("ethAddress"), EthTokens);
+      enqueueSnackbar("Zeno Token Sent to your address", {
         variant: "success",
         autoHideDuration: 1500,
       });

@@ -30,7 +30,7 @@ const Feature = () => {
               />
             </svg>
           </span>
-          <span className="sm:text-5xl">Swap, Lend, Buy </span>all on ploygon
+          <span className="sm:text-5xl">Swap, Lend, Buy </span>all on polygon
           with the lowest gas fees
         </h2>
       </div>

@@ -105,7 +105,7 @@ const Account = () => {
                         onClick={() => WithdrawTokens(item._id, item.EthTokens)}
                         className="px-2 w-28 py-1 cl-div2 rounded shadow text-white"
                       >
-                        {wloading ? <Loader size="sm" /> : "Withdraw"}
+                        withdraw
                       </button>
                     </td>
                   </tr>
